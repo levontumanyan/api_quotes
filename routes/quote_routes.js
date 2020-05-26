@@ -7,8 +7,8 @@ const app = express();
 // adding for form processing
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 //
-//app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/random_quote', async (req, res) => {
     const quote = await quoteModel.find({});
