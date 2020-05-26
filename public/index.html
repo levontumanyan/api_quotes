@@ -15,14 +15,17 @@
         <h1>Add a Quote</h1>
         <form method="POST" action="/add_quote">
             <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
-            <input type="text" name="name" id="name" placeholder="Body" required />
+            <input type="text" name="quote_body" id="quote_body" placeholder="Body" required />
             <label id="icon" for="name"><i class="fas fa-user"></i></label>
-            <input type="text" name="name" id="name" placeholder="Author" required />
+            <input type="text" name="quote_author" id="quote_author" placeholder="Author" required />
             <hr>
             <hr>
             <div class="btn-block">
                 <button id="submit-quote" type="submit">Submit</button>
             </div>
+        </form>
+        <form method="GET" action="/random_quote">
+            <button type="submit">Get Quotes</button>
         </form>
     </div>
 
