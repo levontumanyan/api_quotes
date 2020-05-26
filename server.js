@@ -8,9 +8,15 @@ const app = express();
 
 app.use(express.json()); // Make sure it comes back as json
 
-mongoose.connect('mongodb+srv://api_quotes_admin:Zs3w73dqMjTiN2N@quotesapi01-s2dqb.mongodb.net/test?retryWrites=true&w=majority', {
-    useNewUrlParser: true
-});
+// mongoose.connect('mongodb+srv://api_quotes_admin:Zs3w73dqMjTiN2N@quotesapi01-s2dqb.mongodb.net/test?retryWrites=true&w=majority', {
+//     useNewUrlParser: true
+// });
+
+const connection = "mongodb+srv://api_quotes_admin:Zs3w73dqMjTiN2N@quotesapi01-s2dqb.mongodb.net/test?retryWrites=true&w=majority";
+
+mongoose.connect(connection, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+    .then(() => console.log("Database Connected Successfully"))
+    .catch(err => console.log(err));
 
 app.use(quote_routes);
 
