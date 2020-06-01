@@ -2,17 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const quote_routes = require('./routes/quote_routes.js');
 
-const PORT = process.env.PORT || 3000;
+
+
+const dotenv = require('dotenv');
+dotenv.config();
+
+const PORT = process.env.PORT;
 
 const app = express();
 
 app.use(express.json()); // Make sure it comes back as json
 
-// mongoose.connect('mongodb+srv://api_quotes_admin:Zs3w73dqMjTiN2N@quotesapi01-s2dqb.mongodb.net/test?retryWrites=true&w=majority', {
-//     useNewUrlParser: true
-// });
-
-const connection = process.env.MONGODB_URI || "mongodb+srv://api_quotes_admin:Zs3w73dqMjTiN2N@quotesapi01-s2dqb.mongodb.net/test?retryWrites=true&w=majority";
+const connection = process.env.MONGODB_URI;
 
 mongoose.connect(connection,
     { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
