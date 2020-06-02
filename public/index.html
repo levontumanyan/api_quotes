@@ -7,32 +7,40 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
         integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
+    <!-- FONT
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!-- <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"> -->
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="Skeleton-2.0.4/css/normalize.css">
+    <link rel="stylesheet" href="Skeleton-2.0.4/css/skeleton.css">
 
 </head>
 
 <body>
-    <div class="main-block">
-        <h1>Add a Quote</h1>
-        <form method="POST" action="/add_quote">
-            <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
-            <input type="text" name="quote_body" id="quote_body" placeholder="Body" required />
-            <label id="icon" for="name"><i class="fas fa-user"></i></label>
-            <input type="text" name="quote_author" id="quote_author" placeholder="Author" required />
-            <hr>
-            <hr>
-            <div class="btn-block">
-                <button id="submit-quote" type="submit">Submit</button>
-            </div>
-        </form>
-        <form method="GET" action="/random_quote">
-            <button type="submit">Get Quotes</button>
-        </form>
-    </div>
-    <div class="quotes-block">
-        <h1>Quotes Here:</h1>
-        <ul class="ul-quotes">
-
-        </ul>
+    <div class="container">
+        <div class="main-block row">
+            <h1>Add a Quote</h1>
+            <form method="POST" action="/add_quote">
+                <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
+                <input type="text" name="quote_body" id="quote_body" placeholder="Body" required />
+                <label id="icon" for="name"><i class="fas fa-user"></i></label>
+                <input type="text" name="quote_author" id="quote_author" placeholder="Author" required />
+                <hr>
+                <hr>
+                <div class="btn-block">
+                    <button id="submit-quote" type="submit">Submit</button>
+                </div>
+            </form>
+            <form method="GET" action="/all_quotes">
+                <button type="submit">Get Quotes</button>
+            </form>
+        </div>
+        <div class="row" id="quotes-block">
+            <h1>Random Quote Here:</h1>
+            <!-- <p id="random-quote"></p> -->
+        </div>
     </div>
 
     <script src="index.js"></script>

@@ -10,12 +10,27 @@ const urlencodedParser = bodyParser.urlencoded({ extended: true });
 app.use(express.static('public'));
 
 app.get('/random_quote', async (req, res) => {
-    const quote = await quoteModel.find({});
-
+    //const quote = await quoteModel.find({});
+    // accesses a random quote
+    const quote = await quoteModel.aggregate([{ $sample: { size: 1 } }]);
+    console.log(quote[0]);
 
     try {
-        quote_body = quote.map((document) => document.body)
-        res.send(quote_body);
+        // quote_body = quote.map((document) => document.body)
+        res.json(quote[0]);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+app.get('/all_quotes', async (req, res) => {
+
+    const quote_array = await quoteModel.find({});
+    //console.log(quote[0]);
+
+    try {
+        // quote_body = quote.map((document) => document.body)
+        res.json(quote_array);
     } catch (err) {
         res.status(500).send(err);
     }

@@ -2,12 +2,18 @@
 
 // submit_quote.addEventListener("click", () => { })
 
-var ul_quotes = document.getElementById("ul-quotes");
+var random_quote = document.getElementById("random-quote");
 
 fetch("/random_quote", { "method": "GET" })
 
-    .then(response => {
-        ul_quotes.innerHTML = "dsdfd";
+    .then(res => res.text())
+    .then(body => {
+        console.log(body);
+        var p_tag = document.createElement("p");
+        var quote_body = document.createTextNode(JSON.parse(body).body);
+        p_tag.appendChild(quote_body);
+        var quotes_block = document.getElementById("quotes-block");
+        quotes_block.appendChild(p_tag);
     });
 
 
