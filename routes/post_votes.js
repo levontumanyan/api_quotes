@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const quoteModel = require('../models/quote_model');
 var morgan = require('morgan');
+var cors = require('cors');
 
 router.use(morgan('tiny'));
 
@@ -21,7 +22,7 @@ router.get('/:id', async function (req, res) {
 });
 
 
-router.post('/:id/upvote', async function (req, res) {
+router.post('/:id/upvote', cors(), async function (req, res) {
 
     const quote_to_rate = await quoteModel.findById(req.params.id);
     const num_of_upvotes = await quote_to_rate.meta.upvotes;
@@ -41,7 +42,7 @@ router.post('/:id/upvote', async function (req, res) {
     });
 });
 
-router.post('/:id/downvote', async function (req, res) {
+router.post('/:id/downvote', cors(), async function (req, res) {
 
     const quote_to_rate = await quoteModel.findById(req.params.id);
     const num_of_upvotes = await quote_to_rate.meta.upvotes;
