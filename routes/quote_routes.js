@@ -2,6 +2,7 @@ const express = require('express');
 const quoteModel = require('../models/quote_model');
 const bodyParser = require('body-parser');
 const path = require('path');
+var cors = require('cors');
 const app = express();
 
 // adding for form processing
@@ -13,7 +14,7 @@ app.get('/random_quote', async (req, res) => {
     //const quote = await quoteModel.find({});
     // accesses a random quote
     const quote = await quoteModel.aggregate([{ $sample: { size: 1 } }]);
-    console.log(quote[0]);
+    //console.log(quote[0]);
 
     try {
         // quote_body = quote.map((document) => document.body)
@@ -23,7 +24,7 @@ app.get('/random_quote', async (req, res) => {
     }
 });
 
-app.get('/all_quotes', async (req, res) => {
+app.get('/all_quotes', cors(), async (req, res) => {
 
     const quote_array = await quoteModel.find({});
     //console.log(quote[0]);
