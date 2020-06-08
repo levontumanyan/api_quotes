@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+var cors = require('cors')
 const quote_routes = require('./routes/quote_routes.js');
 
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT;
 
 const app = express();
 
+app.use(cors);
 app.use(express.json()); // Make sure it comes back as json
 
 const connection = process.env.MONGODB_URI;
