@@ -12,7 +12,7 @@ const PORT = process.env.PORT;
 
 const app = express();
 
-app.use(cors);
+app.use(cors); ///adding a comments
 app.use(express.json()); // Make sure it comes back as json
 
 const connection = process.env.MONGODB_URI;
