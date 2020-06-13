@@ -26,7 +26,7 @@ app.get('/random_quote', async (req, res) => {
 
 app.get('/all_quotes', cors(), async (req, res) => {
 
-    const quote_array = await quoteModel.find({});
+    const quote_array = await quoteModel.find().sort('-meta.upvotes');
     //console.log(quote[0]);
 
     try {
